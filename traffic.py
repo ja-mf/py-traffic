@@ -8,7 +8,6 @@ t_sim = 50
 # Creacion de la ciudad
 
 # Construccion de cuadras
-A = Cuadra.CuadraInicio(1)
 
 cuadras = []
 
@@ -23,13 +22,15 @@ for i in range(12,24):
 # implementar diccionario para las conexiones entre cuadras (grafo)
 # (ver http://www.python.org/doc/essays/graphs/)
 
-ciudad = {cuadra[0]: [cuadra[12]],
-		  cuadra[12]: [cuadra[13], cuadra[14]]}
+ciudad = {cuadras[0]: [cuadras[12]],
+		  cuadras[12]: [cuadras[13], cuadras[14]]}
 
 # Lista de eventos
 # tiempo, inicio y final
-listaEventos = [Evento.LlegadaAuto(2, cuadra[0], cuadra[13]), 
-				Evento.LlegadaAuto(5, cuadra[0], cuadra[14])]
+listaEventos = [Evento.LlegadaAuto(2, cuadras[0], cuadras[13], ciudad), 
+				Evento.LlegadaAuto(5, cuadras[0], cuadras[14], ciudad),
+				Evento.CambioSemaforo(6, cuadras[1])]
+
 
 # Inicio de la simulacion
 for t in range(t_sim):
@@ -43,6 +44,6 @@ for t in range(t_sim):
 
 
 # debug
-print A.autos[0].final.uid
+# print cuadras[0].autos[0].final
 
 
