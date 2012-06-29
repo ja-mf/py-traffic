@@ -8,17 +8,26 @@ class Cuadra(object):
 		self.autos = []
 
 	def agregarAuto(self, auto):
-		intentos = intentos+1
+		self.intentos += 1
 
-		if cantidad_autos < capacidad:
-			autos.append(auto)
-			return true
+		if len(self.autos) < self.capacidad:
+			self.autos.append(auto)
+
+			# sacar la cuadra anterior de la ruta
+			self.autos[-1].ruta.pop(0)
+			return True
 		else:
-			return false
+			self.veces_congestionada += 1
+			return False
 	
 	def sacarAuto(self):
 		self.autos.pop(0)
 
 class CuadraInicio(Cuadra):
 	def __init__(self, uid):
-		Cuadra.__init__(self, uid, 1000)
+		Cuadra.__init__(self, uid, 10000)
+		self.capacidad = 10000
+	
+	def agregarAuto(self, auto):
+		self.autos.append(auto)
+		return True
