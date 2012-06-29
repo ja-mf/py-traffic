@@ -1,3 +1,5 @@
+import math
+
 class RandomGamma:
 	# Constants related with random number generator function ran. 
 	# Got from "Numerical recipes in C"
@@ -14,13 +16,43 @@ class RandomGamma:
 	iy = 0
 	iv = [None]*NTAB
 	idum = -275920
-
-	def __init__(self, maxn, idum):
-		self.random_numbers = []
+	
+	
+	
+	# maxn: cantidad de numeros a generar
+	# idum: seed
+	# Gamma(k = alpha, theta = beta)
+	def __init__(self, maxn, idum, alpha, beta):
+		# idum es la semilla comun
 		self.idum = idum
-		for i in range(0, maxn):
-			self.random_numbers.append(self.ran())
-	#		print self.idum
+		# self.gamma son los numeros generados en distribucion gamma, segun alpha y beta.
+		self.gamma = []
+
+		# se procedera a aplicar el algoritmo aparecido
+		# en la pagina 464. calulando constantes
+		a = 1/math.sqrt(2*alpha-1)
+		b = alpha - math.log(4)
+		q = alpha + 1/a
+		theta = 4.5
+		d = 1 + math.log(theta)
+		
+		while (len(self.gamma) < maxn):
+			# U1 y U2 son dos numros aleatorios
+			# pertenecientes a una distribucion uniforme entre 0 y 1.
+			U1 = self.ran()
+			U2 = self.ran()
+
+			V = a*math.log(U1/(1-U1))
+			Y = alpha*math.exp(V)
+			Z = math.pow(U1, 2)*U2
+			W = b + q*V - Y
+
+			if (W + d - theta*Z >= 0):
+				self.gamma.append(Y)
+			elif (W >= math.log(Z)):
+				self.gamma.append(Y)
+			else:
+				continue
 
 	def ran(self):
 
@@ -55,3 +87,4 @@ class RandomGamma:
 			return self.RNMX
 		else:
 			return temp
+
