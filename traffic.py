@@ -60,7 +60,7 @@ listaEventos = []
 t = 0
 while t <= t_sim:
 	random = Rnd.RandomGamma(n_random, seed, k, theta)
-	random.save_random()
+	#random.save_random()
 
 	for i in random.gamma:
 		if (t+i >= t_sim):
