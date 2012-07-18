@@ -24,7 +24,6 @@ class CambioSemaforo(Evento):
 		self.cuadra = cuadra
 	
 	def rutina(self):
-		# Falta desarrollar esta rutina (ver Semaforo.py)
 		# TODO: 
 		# - Tomar la lista de autos de la cuadra, revisar la ruta (proxima cuadra),
 		# hacer uso de Cuadra.agregarAuto() con los 5 primeros autos de la lista (numero de autos 

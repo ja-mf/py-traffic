@@ -55,12 +55,18 @@ ciudad = {	cuadras[1]: [cuadras[15], 	cuadras[13]],
 
 # generamos entonces, tantos periodos (autos) como MaxAutos
 
-MaxAutos = 20 
+MaxAutos = 50 
 seed = -127
 k = 7.09220781
 theta = 0.020051078
+#theta = 0.2
 
 random = Rnd.RandomGamma(MaxAutos, seed, k, theta)
+
+f = open('random_gamma_generated', 'w')
+for i in random.gamma:
+	f.write(str(i) + "\n")
+f.close
 
 # llenar la lista de eventos segun numeros generados
 listaEventos = []
