@@ -3,12 +3,13 @@ import Cuadra
 import Evento
 import Rnd
 import random as r
+import sys
 
 # Tiempo de simulacion
-t_sim = 36000
+t_sim = int(sys.argv[1])
 n_random = t_sim 
-seed = -12
-t_cambio_semaforo = 150
+seed = int(sys.argv[2])
+t_cambio_semaforo = int(sys.argv[3])
 
 # Creacion de la ciudad
 # Construccion de cuadras
