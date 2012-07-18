@@ -6,7 +6,7 @@ import random as r
 import sys
 
 # Tiempo de simulacion
-t_sim = int(sys.argv[1])
+t_sim = int(sys.argv[1])*3600
 n_random = t_sim 
 seed = int(sys.argv[2])
 t_cambio_semaforo = int(sys.argv[3])
