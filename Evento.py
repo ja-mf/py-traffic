@@ -1,6 +1,5 @@
 import Cuadra
 import Auto
-import Semaforo
 
 class Evento:
 	def __init__(self, tiempo):

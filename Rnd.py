@@ -17,7 +17,12 @@ class RandomGamma:
 	iv = [None]*NTAB
 	idum = -275920
 	
-	
+	# save generated numbers	
+	def save_random(self):
+		f = open('random_gamma_generated', 'a')
+		for i in self.gamma:
+			f.write(str(i) + "\n")
+		f.close
 	
 	# maxn: cantidad de numeros a generar
 	# idum: seed
